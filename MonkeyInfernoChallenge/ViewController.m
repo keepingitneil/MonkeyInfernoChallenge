@@ -96,10 +96,35 @@
     NSString *title = [currentJokeDict objectForKey:@"title"];
     NSString *imageUrl = [currentJokeDict objectForKey:@"link"];
     
-    _jokeImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+    UIImage *rawImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+    _jokeImage.image = [self blurImage:rawImage Intensity:1];
     
     _jokeLabel.text = title;
     
+}
+
+-(UIImage *) blurImage:(UIImage *)image Intensity:(float) intensity
+{
+    CIFilter *gaussianBlurFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [gaussianBlurFilter setDefaults];
+    [gaussianBlurFilter setValue:[CIImage imageWithCGImage:[image CGImage]] forKey:kCIInputImageKey];
+    [gaussianBlurFilter setValue:@10 forKey:kCIInputRadiusKey];
+    
+    CIImage *outputImage = [gaussianBlurFilter outputImage];
+    CIContext *context   = [CIContext contextWithOptions:nil];
+    CGRect rect          = [outputImage extent];
+    
+    // these three lines ensure that the final image is the same size
+    
+    rect.origin.x        += (rect.size.width  - image.size.width ) / 2;
+    rect.origin.y        += (rect.size.height - image.size.height) / 2;
+    rect.size            = image.size;
+    
+    CGImageRef cgimg     = [context createCGImage:outputImage fromRect:rect];
+    UIImage *blurredImage       = [UIImage imageWithCGImage:cgimg];
+    CGImageRelease(cgimg);
+    
+    return blurredImage;
 }
 
 @end
