@@ -24,7 +24,7 @@
 		03766496199E8C00001A8CE4 /* DismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 03766495199E8C00001A8CE4 /* DismissSegue.m */; };
 		038C9C8C199EA65C0089D5DC /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C8B199EA65C0089D5DC /* FXBlurView.m */; };
 		038C9C8F199EA7220089D5DC /* BlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C8E199EA7220089D5DC /* BlurView.m */; };
-		038C9C93199EB5060089D5DC /* SocialSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C92199EB5060089D5DC /* SocialSingleton.m */; };
+		038C9C96199EB5F20089D5DC /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C95199EB5F20089D5DC /* ShareViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +63,8 @@
 		038C9C8B199EA65C0089D5DC /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		038C9C8D199EA7220089D5DC /* BlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurView.h; sourceTree = "<group>"; };
 		038C9C8E199EA7220089D5DC /* BlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurView.m; sourceTree = "<group>"; };
-		038C9C91199EB5060089D5DC /* SocialSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSingleton.h; sourceTree = "<group>"; };
-		038C9C92199EB5060089D5DC /* SocialSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSingleton.m; sourceTree = "<group>"; };
+		038C9C94199EB5F20089D5DC /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		038C9C95199EB5F20089D5DC /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +128,8 @@
 				038C9C89199EA6430089D5DC /* Views */,
 				03766493199E8BDC001A8CE4 /* Custom Segues */,
 				0376646D199E89D9001A8CE4 /* AppDelegate.h */,
+				038C9C94199EB5F20089D5DC /* ShareViewController.h */,
+				038C9C95199EB5F20089D5DC /* ShareViewController.m */,
 				0376646E199E89D9001A8CE4 /* AppDelegate.m */,
 				03766470199E89D9001A8CE4 /* Main.storyboard */,
 				03766473199E89D9001A8CE4 /* ViewController.h */,
@@ -190,8 +192,6 @@
 		038C9C90199EB4D50089D5DC /* Share Stuff */ = {
 			isa = PBXGroup;
 			children = (
-				038C9C91199EB5060089D5DC /* SocialSingleton.h */,
-				038C9C92199EB5060089D5DC /* SocialSingleton.m */,
 			);
 			name = "Share Stuff";
 			sourceTree = "<group>";
@@ -295,11 +295,11 @@
 			files = (
 				03766475199E89D9001A8CE4 /* ViewController.m in Sources */,
 				0376646F199E89D9001A8CE4 /* AppDelegate.m in Sources */,
+				038C9C96199EB5F20089D5DC /* ShareViewController.m in Sources */,
 				038C9C8C199EA65C0089D5DC /* FXBlurView.m in Sources */,
 				03766496199E8C00001A8CE4 /* DismissSegue.m in Sources */,
 				0376646B199E89D9001A8CE4 /* main.m in Sources */,
 				038C9C8F199EA7220089D5DC /* BlurView.m in Sources */,
-				038C9C93199EB5060089D5DC /* SocialSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
