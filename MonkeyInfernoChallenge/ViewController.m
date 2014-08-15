@@ -46,8 +46,8 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     _blurView.blurRadius = 8;
-    _blurView.frame = _jokeImage.frame;
-    [_blurView setNeedsDisplay];
+    
+    [self scaleBlur];
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,7 +116,8 @@
     UIImage *rawImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
     _jokeImage.image = rawImage;
     
-    _blurView.frame = _jokeImage.frame;
+    [self scaleBlur];
+    
     _jokeLabel.text = title;
 }
 
@@ -129,6 +130,32 @@
         destinationVC.titleToShare = _currentTitle;
         
     }
+}
+
+-(void) scaleBlur
+{
+    float scaleX = 0;
+    float scaleY = 0;
+    float rawWidth = CGImageGetWidth(_jokeImage.image.CGImage);
+    float rawHeight = CGImageGetHeight(_jokeImage.image.CGImage);
+    if(_jokeImage.image)
+    {
+        scaleX = _jokeImage.frame.size.width/rawWidth;
+        scaleY = _jokeImage.frame.size.height/rawHeight;
+    }
+    
+    CGRect rectangle;
+    if(scaleX >= scaleY)
+    {
+            rectangle = CGRectMake(_jokeImage.frame.origin.x + (_jokeImage.frame.size.width - rawWidth * scaleY) * .5, _jokeImage.frame.origin.y, _jokeImage.image.size.width * scaleY, _jokeImage.image.size.height * scaleY);
+    }
+    else
+    {
+            rectangle = CGRectMake(_jokeImage.frame.origin.x, _jokeImage.frame.origin.y + (_jokeImage.frame.size.height - rawHeight * scaleX) * .5, _jokeImage.image.size.width * scaleX, _jokeImage.image.size.height * scaleX);
+    }
+
+    _blurView.frame = rectangle;
+    [_blurView setNeedsDisplay];
 }
 
 
