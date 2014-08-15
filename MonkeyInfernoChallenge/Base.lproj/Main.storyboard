@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -15,11 +15,99 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Jokes..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="275" translatesAutoresizingMaskIntoConstraints="NO" id="kXa-mG-uCB">
+                                <rect key="frame" x="25" y="37" width="275" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="ZMl-6h-eoU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V8k-ZO-DG3">
+                                <rect key="frame" x="25" y="126" width="275" height="340"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcm-El-Nh8">
+                                <rect key="frame" x="40" y="474" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="New Joke">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newJokeButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2kq-kp-4AD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEE-sV-5Qb">
+                                <rect key="frame" x="190" y="474" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="E58-fo-DYK"/>
+                                </constraints>
+                                <state key="normal" title="Share!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bPr-h9-fb3" kind="modal" id="tng-k6-fUQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kXa-mG-uCB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="17" id="5R7-48-hTd"/>
+                            <constraint firstAttribute="trailing" secondItem="kXa-mG-uCB" secondAttribute="trailing" constant="20" symbolic="YES" id="B5L-UQ-plV"/>
+                            <constraint firstItem="V8k-ZO-DG3" firstAttribute="top" secondItem="kXa-mG-uCB" secondAttribute="bottom" constant="8" id="Ing-Xq-OGw"/>
+                            <constraint firstItem="V8k-ZO-DG3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" constant="2.5" id="JY2-ty-ZBb"/>
+                            <constraint firstAttribute="trailing" secondItem="nEE-sV-5Qb" secondAttribute="trailing" constant="66" id="K67-AC-LF1"/>
+                            <constraint firstItem="nEE-sV-5Qb" firstAttribute="leading" secondItem="Fcm-El-Nh8" secondAttribute="trailing" constant="62" id="SLu-xn-bh7"/>
+                            <constraint firstItem="kXa-mG-uCB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="aU4-MB-cIL"/>
+                            <constraint firstItem="Fcm-El-Nh8" firstAttribute="baseline" secondItem="nEE-sV-5Qb" secondAttribute="baseline" id="asc-cX-2RV"/>
+                            <constraint firstItem="V8k-ZO-DG3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="bsU-w4-uHH"/>
+                            <constraint firstItem="Fcm-El-Nh8" firstAttribute="top" secondItem="V8k-ZO-DG3" secondAttribute="bottom" constant="8" id="cBL-Yi-zuU"/>
+                            <constraint firstItem="V8k-ZO-DG3" firstAttribute="leading" secondItem="Fcm-El-Nh8" secondAttribute="leading" constant="-15" id="eRM-Rd-TJa"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Fcm-El-Nh8" secondAttribute="bottom" constant="64" id="vRe-82-buu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="jokeImage" destination="V8k-ZO-DG3" id="1qn-jv-0Th"/>
+                        <outlet property="jokeLabel" destination="kXa-mG-uCB" id="faQ-Wm-cb7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="228" y="-65"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Rsl-aS-cX7">
+            <objects>
+                <viewController id="bPr-h9-fb3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pUx-Dy-tZM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vmz-xh-PVj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FNi-aM-Bbo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgD-fx-zLw">
+                                <rect key="frame" x="20" y="20" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="custom" customClass="DismissSegue" id="UMb-9l-RoA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OZ5-ez-ZTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="588"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DismissSegue.h
 //  MonkeyInfernoChallenge
 //
 //  Created by Neil Dwyer on 8/15/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <NSURLConnectionDelegate>
+@interface DismissSegue : UIStoryboardSegue
 
 @end

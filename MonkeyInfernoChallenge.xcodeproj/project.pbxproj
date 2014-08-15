@@ -21,6 +21,7 @@
 		03766480199E89D9001A8CE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03766462199E89D9001A8CE4 /* UIKit.framework */; };
 		03766488199E89D9001A8CE4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 03766486199E89D9001A8CE4 /* InfoPlist.strings */; };
 		0376648A199E89D9001A8CE4 /* MonkeyInfernoChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 03766489199E89D9001A8CE4 /* MonkeyInfernoChallengeTests.m */; };
+		03766496199E8C00001A8CE4 /* DismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 03766495199E8C00001A8CE4 /* DismissSegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		03766485199E89D9001A8CE4 /* MonkeyInfernoChallengeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MonkeyInfernoChallengeTests-Info.plist"; sourceTree = "<group>"; };
 		03766487199E89D9001A8CE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		03766489199E89D9001A8CE4 /* MonkeyInfernoChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonkeyInfernoChallengeTests.m; sourceTree = "<group>"; };
+		03766494199E8C00001A8CE4 /* DismissSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissSegue.h; sourceTree = "<group>"; };
+		03766495199E8C00001A8CE4 /* DismissSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissSegue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 		03766464199E89D9001A8CE4 /* MonkeyInfernoChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				03766493199E8BDC001A8CE4 /* Custom Segues */,
 				0376646D199E89D9001A8CE4 /* AppDelegate.h */,
 				0376646E199E89D9001A8CE4 /* AppDelegate.m */,
 				03766470199E89D9001A8CE4 /* Main.storyboard */,
@@ -150,6 +154,15 @@
 				03766486199E89D9001A8CE4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		03766493199E8BDC001A8CE4 /* Custom Segues */ = {
+			isa = PBXGroup;
+			children = (
+				03766494199E8C00001A8CE4 /* DismissSegue.h */,
+				03766495199E8C00001A8CE4 /* DismissSegue.m */,
+			);
+			name = "Custom Segues";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +264,7 @@
 			files = (
 				03766475199E89D9001A8CE4 /* ViewController.m in Sources */,
 				0376646F199E89D9001A8CE4 /* AppDelegate.m in Sources */,
+				03766496199E8C00001A8CE4 /* DismissSegue.m in Sources */,
 				0376646B199E89D9001A8CE4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +470,7 @@
 				0376648F199E89D9001A8CE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03766490199E89D9001A8CE4 /* Build configuration list for PBXNativeTarget "MonkeyInfernoChallengeTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +479,7 @@
 				03766492199E89D9001A8CE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

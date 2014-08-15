@@ -10,20 +10,96 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *jokeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *jokeImage;
+
 @end
 
 @implementation ViewController
+{
+    NSUInteger _currentPage;
+    NSUInteger _currentIndex;
+    
+    NSDictionary *_currentFatData;
+    NSArray *_currentSkimmedData;
+    
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+
+    _currentPage = 0;
+    _currentIndex = 0;
+    
+    [self newJoke];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) fetchFromImgur
+{
+    //e4df7dea7ee72de <--client ID
+    //e8026e0930afd42ae421935b087004f335f927ac <--client secret
+    _currentIndex = 0;
+    
+    // Create the request.
+    NSString *stringForUrl = [NSString stringWithFormat:@"https://api.imgur.com/3/gallery/r/funny/time/%i.json",_currentPage];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringForUrl]];
+    [request setValue:@"Client-ID e4df7dea7ee72de" forHTTPHeaderField:@"Authorization"];
+    
+    // Create url connection and fire request
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
+    
+    
+    _currentPage++;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    _currentFatData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    _currentSkimmedData = [_currentFatData objectForKey:@"data"];
+    
+    //0 index to prevent race condition/thread problems, should always be 0 anyways
+    [self updateJokeViewsWithIndex:0 Data:_currentSkimmedData];
+}
+
+
+- (IBAction)newJokeButton:(id)sender
+{
+    [self newJoke];
+}
+
+-(void) newJoke
+{
+    if(!_currentSkimmedData || (_currentIndex >= _currentSkimmedData.count))
+    {
+        [self fetchFromImgur];
+    }
+    else
+    {
+        [self updateJokeViewsWithIndex:_currentIndex Data:_currentSkimmedData];
+    }
+    
+    _currentIndex++;
+}
+
+-(void) updateJokeViewsWithIndex:(NSUInteger)index Data:(NSArray *)data
+{
+    NSDictionary *currentJokeDict = [data objectAtIndex:index];
+    NSString *title = [currentJokeDict objectForKey:@"title"];
+    NSString *imageUrl = [currentJokeDict objectForKey:@"link"];
+    
+    _jokeImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+    
+    _jokeLabel.text = title;
+    
 }
 
 @end
