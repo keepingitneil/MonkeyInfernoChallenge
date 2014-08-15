@@ -49,7 +49,7 @@
     _blurView.currentBlurRadius = 15;
     _blurView.blurRadius = 15;
     [_blurView setHidden:NO];
-    //[self scaleBlur];
+    [self scaleBlur];
 }
 
 - (void)didReceiveMemoryWarning
