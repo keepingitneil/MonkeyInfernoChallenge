@@ -43,11 +43,13 @@
     [self newJoke];
 }
 
--(void) viewWillAppear:(BOOL)animated
+-(void) viewDidAppear:(BOOL)animated
 {
-    _blurView.blurRadius = 8;
-    
-    [self scaleBlur];
+    //hackish
+    _blurView.currentBlurRadius = 15;
+    _blurView.blurRadius = 15;
+    [_blurView setHidden:NO];
+    //[self scaleBlur];
 }
 
 - (void)didReceiveMemoryWarning

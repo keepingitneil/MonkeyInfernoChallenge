@@ -10,7 +10,8 @@
 
 @implementation BlurView
 {
-    float _currentBlurRadius;
+    
+    BOOL _isTouching;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -18,8 +19,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _currentBlurRadius = 10;
+        _currentBlurRadius = 15;
         self.blurRadius = _currentBlurRadius;
+        _isTouching = NO;
         [self setUserInteractionEnabled:YES];
     }
     return self;
@@ -27,29 +29,41 @@
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.hidden = YES;
+    _isTouching = YES;
+    [self animateBlurRadius];
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.hidden = NO;
+    _isTouching = NO;
+    [self animateBlurRadius];
 }
 
 //if time permits fix this
 -(void) animateBlurRadius
 {
     _currentBlurRadius -= 1.0;
-    if(_currentBlurRadius > 0)
+    if(_isTouching)
     {
-        self.blurRadius = _currentBlurRadius;
-        [self setNeedsDisplay];
-        [self performSelector:@selector(animateBlurRadius) withObject:nil afterDelay:.01];
+        if(_currentBlurRadius > 0)
+        {
+            self.blurRadius = _currentBlurRadius;
+            [self setNeedsDisplay];
+            [self performSelector:@selector(animateBlurRadius) withObject:nil afterDelay:.01];
+        }
+        else
+        {
+            _currentBlurRadius = 0;
+            self.blurRadius = _currentBlurRadius;
+            self.hidden = YES;
+            
+        }
     }
     else
     {
-        _currentBlurRadius = 0;
+        _currentBlurRadius = 15;
         self.blurRadius = _currentBlurRadius;
-
+        self.hidden = NO;
     }
 }
 

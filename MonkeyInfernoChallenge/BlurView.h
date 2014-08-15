@@ -10,4 +10,6 @@
 
 @interface BlurView : FXBlurView
 
+@property (nonatomic) float currentBlurRadius;
+
 @end
