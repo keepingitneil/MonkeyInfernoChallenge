@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "FXBlurView.h"
 #import "BlurView.h"
+#import "ShareViewController.h"
 
 @interface ViewController ()
 
@@ -26,6 +27,9 @@
     NSDictionary *_currentFatData;
     NSArray *_currentSkimmedData;
     
+    NSString *_currentLink;
+    NSString *_currentTitle;
+    
 }
 
 - (void)viewDidLoad
@@ -42,6 +46,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     _blurView.blurRadius = 8;
+    _blurView.frame = _jokeImage.frame;
     [_blurView setNeedsDisplay];
 }
 
@@ -105,13 +110,25 @@
     NSDictionary *currentJokeDict = [data objectAtIndex:index];
     NSString *title = [currentJokeDict objectForKey:@"title"];
     NSString *imageUrl = [currentJokeDict objectForKey:@"link"];
+    _currentLink = imageUrl;
+    _currentTitle = title;
     
     UIImage *rawImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
     _jokeImage.image = rawImage;
     
     _blurView.frame = _jokeImage.frame;
-    
     _jokeLabel.text = title;
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqual:@"shareSegue"])
+    {
+        ShareViewController *destinationVC = segue.destinationViewController;
+        destinationVC.linkToShare = _currentLink;
+        destinationVC.titleToShare = _currentTitle;
+        
+    }
 }
 
 

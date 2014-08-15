@@ -12,8 +12,8 @@
 
 +(SocialSingleton *)sharedInstance;
 
--(void) shareLink:(NSString *)link ToFacebookCompletionSelector:(SEL) completedSelector FailedSelector:(SEL)failedSelector Sender:(id)sender;
+-(void) shareLink:(NSString *)link WithTitle:(NSString *)title ToFacebookCompletionSelector:(SEL) completedSelector FailedSelector:(SEL)failedSelector Sender:(id)sender;
 
--(void) shareLink:(NSString *)link ToTwitterCompletionSelector:(SEL) completedSelector FailedSelector:(SEL) failedSelector Sender:(id)sender;
+-(void) shareLink:(NSString *)link WithTitle:(NSString *)title ToTwitterCompletionSelector:(SEL) completedSelector FailedSelector:(SEL) failedSelector Sender:(id)sender;
 
 @end

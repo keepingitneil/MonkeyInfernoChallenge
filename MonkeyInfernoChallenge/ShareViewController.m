@@ -7,6 +7,7 @@
 //
 
 #import "ShareViewController.h"
+#import "SocialSingleton.h"
 
 @interface ShareViewController ()
 
@@ -33,6 +34,36 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)twitterButton:(id)sender
+{
+    [[SocialSingleton sharedInstance] shareLink:_linkToShare WithTitle:_titleToShare ToTwitterCompletionSelector:@selector(shareComplete) FailedSelector:@selector(shareFailed) Sender:self];
+}
+
+- (IBAction)facebookButton:(id)sender
+{
+    [[SocialSingleton sharedInstance] shareLink:_linkToShare WithTitle:_titleToShare ToFacebookCompletionSelector:@selector(shareComplete) FailedSelector:@selector(shareFailed) Sender:self];
+}
+
+
+-(void) shareComplete
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thank you!" message:@"Sharing worked" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        
+        [alert show];
+    });
+}
+
+-(void) shareFailed
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Woops!" message:@"Sharing Failed" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        
+        [alert show];
+    });
+    
 }
 
 /*

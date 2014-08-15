@@ -50,10 +50,10 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bPr-h9-fb3" kind="modal" id="tng-k6-fUQ"/>
+                                    <segue destination="bPr-h9-fb3" kind="modal" identifier="shareSegue" id="tng-k6-fUQ"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y2D-nO-Ydq" customClass="BlurView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2D-nO-Ydq" customClass="BlurView">
                                 <rect key="frame" x="25" y="126" width="275" height="340"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -62,11 +62,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kXa-mG-uCB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="17" id="5R7-48-hTd"/>
+                            <constraint firstItem="Y2D-nO-Ydq" firstAttribute="top" secondItem="kXa-mG-uCB" secondAttribute="bottom" constant="8" symbolic="YES" id="8j6-kr-AAi"/>
+                            <constraint firstItem="Fcm-El-Nh8" firstAttribute="top" secondItem="Y2D-nO-Ydq" secondAttribute="bottom" constant="8" symbolic="YES" id="95H-8g-rdw"/>
+                            <constraint firstItem="Y2D-nO-Ydq" firstAttribute="trailing" secondItem="V8k-ZO-DG3" secondAttribute="trailing" id="9o9-0l-YgH"/>
                             <constraint firstAttribute="trailing" secondItem="kXa-mG-uCB" secondAttribute="trailing" constant="20" symbolic="YES" id="B5L-UQ-plV"/>
                             <constraint firstItem="V8k-ZO-DG3" firstAttribute="top" secondItem="kXa-mG-uCB" secondAttribute="bottom" constant="8" id="Ing-Xq-OGw"/>
                             <constraint firstItem="V8k-ZO-DG3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" constant="2.5" id="JY2-ty-ZBb"/>
                             <constraint firstAttribute="trailing" secondItem="nEE-sV-5Qb" secondAttribute="trailing" constant="66" id="K67-AC-LF1"/>
                             <constraint firstItem="nEE-sV-5Qb" firstAttribute="leading" secondItem="Fcm-El-Nh8" secondAttribute="trailing" constant="62" id="SLu-xn-bh7"/>
+                            <constraint firstItem="Y2D-nO-Ydq" firstAttribute="leading" secondItem="V8k-ZO-DG3" secondAttribute="leading" id="THl-8k-3Pn"/>
                             <constraint firstItem="kXa-mG-uCB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="aU4-MB-cIL"/>
                             <constraint firstItem="Fcm-El-Nh8" firstAttribute="baseline" secondItem="nEE-sV-5Qb" secondAttribute="baseline" id="asc-cX-2RV"/>
                             <constraint firstItem="V8k-ZO-DG3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="25" id="bsU-w4-uHH"/>
@@ -85,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="228" y="-65"/>
         </scene>
-        <!--View Controller-->
+        <!--Share View Controller-->
         <scene sceneID="Rsl-aS-cX7">
             <objects>
-                <viewController id="bPr-h9-fb3" sceneMemberID="viewController">
+                <viewController id="bPr-h9-fb3" customClass="ShareViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pUx-Dy-tZM"/>
                         <viewControllerLayoutGuide type="bottom" id="Vmz-xh-PVj"/>
@@ -105,6 +109,26 @@
                                 </state>
                                 <connections>
                                     <segue destination="vXZ-lx-hvc" kind="custom" customClass="DismissSegue" id="UMb-9l-RoA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noy-fZ-q4x">
+                                <rect key="frame" x="123" y="134" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Twitter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="twitterButton:" destination="bPr-h9-fb3" eventType="touchUpInside" id="lN2-AR-2YT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZh-UI-9NX">
+                                <rect key="frame" x="116" y="185" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookButton:" destination="bPr-h9-fb3" eventType="touchUpInside" id="60e-Je-Cf4"/>
                                 </connections>
                             </button>
                         </subviews>

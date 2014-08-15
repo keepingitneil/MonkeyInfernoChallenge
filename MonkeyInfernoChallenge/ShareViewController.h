@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShareViewController : UIViewController
+@interface ShareViewController : UIViewController <UIAlertViewDelegate>
+
+@property (nonatomic, strong) NSString *linkToShare;
+@property (nonatomic, strong) NSString *titleToShare;
 
 @end

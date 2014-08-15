@@ -31,13 +31,12 @@
     return sharedInstance;
 }
 
--(void) shareLink:(NSString *)link ToFacebookCompletionSelector:(SEL) completedSelector FailedSelector:(SEL)failedSelector Sender:(id)sender
+-(void) shareLink:(NSString *)link WithTitle:(NSString *)title ToFacebookCompletionSelector:(SEL) completedSelector FailedSelector:(SEL)failedSelector Sender:(id)sender
 {
     // Check if the Facebook app is installed and we can present the share dialog
     FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
-    params.name = @"HAHA JOKE!";
-    params.linkDescription = @"Can't stop playing it!";
-    params.link = [NSURL URLWithString:@"https://itunes.apple.com/us/app/curvy-cave/id882373580?mt=8&uo=4"];
+    params.name = title;
+    params.link = [NSURL URLWithString:link];
     
     // If the Facebook app is installed and we can present the share dialog
     if ([FBDialogs canPresentShareDialogWithParams:params])
@@ -63,9 +62,8 @@
         // Present the feed dialog
         // Put together the dialog parameters
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"Curvy Cave", @"name",
-                                       @"Can't stop playing it!", @"description",
-                                       @"https://itunes.apple.com/us/app/curvy-cave/id882373580?mt=8&uo=4", @"link",
+                                       title, @"name",
+                                       link, @"link",
                                        nil];
         
         // Show the feed dialog
@@ -120,7 +118,7 @@
     return params;
 }
 
--(void) shareLink:(NSString *)link ToTwitterCompletionSelector:(SEL) completedSelector FailedSelector:(SEL) failedSelector Sender:(id)sender
+-(void) shareLink:(NSString *)link WithTitle:(NSString *)title ToTwitterCompletionSelector:(SEL) completedSelector FailedSelector:(SEL) failedSelector Sender:(id)sender
 {
     
     ACAccountStore *account = [[ACAccountStore alloc] init];
@@ -144,7 +142,7 @@
                  NSDictionary *parameters;
                  
                  requestURL = [NSURL URLWithString:@"https://api.twitter.com/1/statuses/update.json"];
-                 parameters = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"I'm playing curvy cave, you would like it! https://itunes.apple.com/us/app/curvy-cave/id882373580?mt=8&uo=4"],@"status",@"true",@"wrap_links", nil];
+                 parameters = [[NSDictionary alloc] initWithObjectsAndKeys:[NSString stringWithFormat:@"%@ %@",title,link],@"status",@"true",@"wrap_links", nil];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter

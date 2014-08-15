@@ -25,6 +25,8 @@
 		038C9C8C199EA65C0089D5DC /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C8B199EA65C0089D5DC /* FXBlurView.m */; };
 		038C9C8F199EA7220089D5DC /* BlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C8E199EA7220089D5DC /* BlurView.m */; };
 		038C9C96199EB5F20089D5DC /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C95199EB5F20089D5DC /* ShareViewController.m */; };
+		038C9C99199EB64D0089D5DC /* SocialSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 038C9C98199EB64D0089D5DC /* SocialSingleton.m */; };
+		038C9C9B199EB6820089D5DC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 038C9C9A199EB6820089D5DC /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,9 @@
 		038C9C8E199EA7220089D5DC /* BlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurView.m; sourceTree = "<group>"; };
 		038C9C94199EB5F20089D5DC /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		038C9C95199EB5F20089D5DC /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		038C9C97199EB64D0089D5DC /* SocialSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialSingleton.h; sourceTree = "<group>"; };
+		038C9C98199EB64D0089D5DC /* SocialSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialSingleton.m; sourceTree = "<group>"; };
+		038C9C9A199EB6820089D5DC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03766461199E89D9001A8CE4 /* CoreGraphics.framework in Frameworks */,
+				038C9C9B199EB6820089D5DC /* FacebookSDK.framework in Frameworks */,
 				03766463199E89D9001A8CE4 /* UIKit.framework in Frameworks */,
 				0376645F199E89D9001A8CE4 /* Foundation.framework in Frameworks */,
 			);
@@ -113,6 +119,7 @@
 		0376645D199E89D9001A8CE4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				038C9C9A199EB6820089D5DC /* FacebookSDK.framework */,
 				0376645E199E89D9001A8CE4 /* Foundation.framework */,
 				03766460199E89D9001A8CE4 /* CoreGraphics.framework */,
 				03766462199E89D9001A8CE4 /* UIKit.framework */,
@@ -192,6 +199,8 @@
 		038C9C90199EB4D50089D5DC /* Share Stuff */ = {
 			isa = PBXGroup;
 			children = (
+				038C9C97199EB64D0089D5DC /* SocialSingleton.h */,
+				038C9C98199EB64D0089D5DC /* SocialSingleton.m */,
 			);
 			name = "Share Stuff";
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 			files = (
 				03766475199E89D9001A8CE4 /* ViewController.m in Sources */,
 				0376646F199E89D9001A8CE4 /* AppDelegate.m in Sources */,
+				038C9C99199EB64D0089D5DC /* SocialSingleton.m in Sources */,
 				038C9C96199EB5F20089D5DC /* ShareViewController.m in Sources */,
 				038C9C8C199EA65C0089D5DC /* FXBlurView.m in Sources */,
 				03766496199E8C00001A8CE4 /* DismissSegue.m in Sources */,
@@ -424,6 +434,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MonkeyInfernoChallenge/MonkeyInfernoChallenge-Prefix.pch";
 				INFOPLIST_FILE = "MonkeyInfernoChallenge/MonkeyInfernoChallenge-Info.plist";
@@ -437,6 +451,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MonkeyInfernoChallenge/MonkeyInfernoChallenge-Prefix.pch";
 				INFOPLIST_FILE = "MonkeyInfernoChallenge/MonkeyInfernoChallenge-Info.plist";
