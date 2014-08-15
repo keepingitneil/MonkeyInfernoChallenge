@@ -15,12 +15,23 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.blurRadius = 10;
+        [self setUserInteractionEnabled:YES];
     }
     return self;
 }
 
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.blurRadius = 0;
+    [self setNeedsDisplay];
+}
 
-
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.blurRadius = 10;
+    [self setNeedsDisplay];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -8,12 +8,13 @@
 
 #import "ViewController.h"
 #import "FXBlurView.h"
+#import "BlurView.h"
 
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *jokeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *jokeImage;
-@property (weak, nonatomic) IBOutlet FXBlurView *blurView;
+@property (weak, nonatomic) IBOutlet BlurView *blurView;
 
 @end
 
@@ -34,8 +35,6 @@
 
     _currentPage = 0;
     _currentIndex = 0;
-    
-    _blurView.blurRadius = 10;
     
     [self newJoke];
 }
