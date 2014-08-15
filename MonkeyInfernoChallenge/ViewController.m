@@ -39,6 +39,12 @@
     [self newJoke];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    _blurView.blurRadius = 8;
+    [_blurView setNeedsDisplay];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

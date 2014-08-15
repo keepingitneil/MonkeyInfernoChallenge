@@ -9,13 +9,17 @@
 #import "BlurView.h"
 
 @implementation BlurView
+{
+    float _currentBlurRadius;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.blurRadius = 10;
+        _currentBlurRadius = 10;
+        self.blurRadius = _currentBlurRadius;
         [self setUserInteractionEnabled:YES];
     }
     return self;
@@ -23,23 +27,30 @@
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.blurRadius = 0;
-    [self setNeedsDisplay];
+    self.hidden = YES;
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.blurRadius = 10;
-    [self setNeedsDisplay];
+    self.hidden = NO;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+//if time permits fix this
+-(void) animateBlurRadius
 {
-    // Drawing code
+    _currentBlurRadius -= 1.0;
+    if(_currentBlurRadius > 0)
+    {
+        self.blurRadius = _currentBlurRadius;
+        [self setNeedsDisplay];
+        [self performSelector:@selector(animateBlurRadius) withObject:nil afterDelay:.01];
+    }
+    else
+    {
+        _currentBlurRadius = 0;
+        self.blurRadius = _currentBlurRadius;
+
+    }
 }
-*/
 
 @end
